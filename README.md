@@ -131,14 +131,14 @@ values. See [`SPEC.md`](SPEC.md) for the full design.
 | Language | Files | Lines | Blanks | Comments | Code | Complexity |
 |---|---|---|---|---|---|---|
 | Go | 29 | 1,838 | 210 | 180 | 1,448 | 288 |
-| Markdown | 3 | 653 | 147 | 0 | 506 | 0 |
+| Markdown | 3 | 674 | 151 | 0 | 523 | 0 |
 | Shell | 2 | 74 | 9 | 19 | 46 | 10 |
-| **Total** | **34** | **2,565** | **366** | **199** | **2,000** | **298** |
+| **Total** | **34** | **2,586** | **370** | **199** | **2,017** | **298** |
 
-- **Estimated Cost to Develop (organic):** $55,934
-- **Estimated Schedule Effort (organic):** 4.60 months
-- **Estimated People Required (organic):** 1.08
-- **Processed:** 90,165 bytes (0.090 megabytes)
+- **Estimated Cost to Develop (organic):** $56,433
+- **Estimated Schedule Effort (organic):** 4.61 months
+- **Estimated People Required (organic):** 1.09
+- **Processed:** 91,056 bytes (0.091 megabytes)
 
 *Generated with [scc](https://github.com/boyter/scc) on 2026-06-18*
 <!-- scc-end -->

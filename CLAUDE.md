@@ -37,6 +37,27 @@ rbstat line N+1 with dstat line N when comparing steady-state values.
 Do not "fix" these: since-boot first line (vs blank), `-cdngy` default with no
 leading time column, and scrolling-only output (no in-place redraw).
 
+## Demo screenshots
+
+Capture README/demo screenshots with **rbterm** — full guide for agents:
+<https://github.com/binRick/rbterm/blob/main/docs/cli-screenshots.md>
+(`tools/rbterm-shot.py`, runs headless so it never shows on screen or eats
+keystrokes). The README image (`docs/rbstat-demo.png`) was made this way.
+
+rbstat is Linux-only, so use the **cross-host recipe**: run the real binary
+on a Linux host under `script` (so it colorizes), pull the bytes, then render
+them through rbterm:
+
+```sh
+ssh mia 'script -qe -c "/path/to/rbstat 1 8" /tmp/rbstat.raw'
+scp mia:/tmp/rbstat.raw /tmp/rbstat.raw
+grep -av -e 'Script started' -e 'Script done' -e 'did not select' \
+    /tmp/rbstat.raw > /tmp/rbstat-clean.raw
+# from a checkout of binRick/rbterm (built):
+tools/rbterm-shot.py --out docs/rbstat-demo.png --tui --cols 64 --rows 11 \
+    --bg '#0a0c10' --cmd 'cat /tmp/rbstat-clean.raw'
+```
+
 ## Maintain scc statistics
 
 On any commit you make, regenerate the `## Code Statistics` section in
