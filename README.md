@@ -14,6 +14,27 @@ usr sys idl wai stl| read  writ| recv  send|  in   out | int   csw
 
 Single static binary, **Linux only**, no external dependencies (stdlib only).
 
+## Install
+
+Prebuilt artifacts are attached to each [GitHub release](https://github.com/binRick/rbstat/releases).
+
+**RPM (RHEL/CentOS/Rocky/Alma 9 & 10):**
+
+```sh
+# el10, x86_64 (use the el9 / aarch64 asset to match your system)
+sudo rpm -Uvh https://github.com/binRick/rbstat/releases/latest/download/rbstat-0.1.0-1.el10.x86_64.rpm
+```
+
+**Static binary (no dependencies):** download the asset matching your arch
+(`amd64`, `arm64`, `386`, `arm`, `ppc64le`, `s390x`, `riscv64`), e.g.
+
+```sh
+curl -L -o rbstat https://github.com/binRick/rbstat/releases/latest/download/rbstat-0.1.0-linux-amd64
+chmod +x rbstat && ./rbstat
+```
+
+`SHA256SUMS` is attached for verification.
+
 ## Build
 
 ```sh
@@ -21,7 +42,9 @@ go build -o rbstat .
 ```
 
 Requires Go 1.22+. The program reads `/proc`, so it runs on Linux; it
-cross-compiles from any host with `GOOS=linux`.
+cross-compiles from any host with `GOOS=linux`. Release artifacts are built
+with `scripts/build-rpms.sh` (el9/el10 RPMs via containers) and static
+`CGO_ENABLED=0` cross-compiles for the arches above.
 
 ## Usage
 
@@ -106,14 +129,14 @@ values. See [`SPEC.md`](SPEC.md) for the full design.
 | Language | Files | Lines | Blanks | Comments | Code | Complexity |
 |---|---|---|---|---|---|---|
 | Go | 29 | 1,838 | 210 | 180 | 1,448 | 288 |
-| Markdown | 3 | 628 | 139 | 0 | 489 | 0 |
-| Shell | 1 | 26 | 5 | 9 | 12 | 5 |
-| **Total** | **33** | **2,492** | **354** | **189** | **1,949** | **293** |
+| Markdown | 3 | 651 | 146 | 0 | 505 | 0 |
+| Shell | 2 | 74 | 9 | 19 | 46 | 10 |
+| **Total** | **34** | **2,563** | **365** | **199** | **1,999** | **298** |
 
-- **Estimated Cost to Develop (organic):** $54,437
-- **Estimated Schedule Effort (organic):** 4.55 months
-- **Estimated People Required (organic):** 1.06
-- **Processed:** 87,431 bytes (0.087 megabytes)
+- **Estimated Cost to Develop (organic):** $55,904
+- **Estimated Schedule Effort (organic):** 4.60 months
+- **Estimated People Required (organic):** 1.08
+- **Processed:** 90,094 bytes (0.090 megabytes)
 
 *Generated with [scc](https://github.com/boyter/scc) on 2026-06-18*
 <!-- scc-end -->
