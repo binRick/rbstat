@@ -75,7 +75,10 @@ dstat.
 | `-a` | `--all`  | — | shorthand for `-cdngy` |
 
 Short flags cluster, so `rbstat -cdn 1 5` selects cpu, disk and net, updating
-every second five times.
+every second five times. Selecting a different set — `rbstat -cml` (cpu, memory,
+load):
+
+![rbstat -cml — cpu, memory and load columns](docs/rbstat-mem.png)
 
 ### Options
 
@@ -131,14 +134,14 @@ values. See [`SPEC.md`](SPEC.md) for the full design.
 | Language | Files | Lines | Blanks | Comments | Code | Complexity |
 |---|---|---|---|---|---|---|
 | Go | 29 | 1,838 | 210 | 180 | 1,448 | 288 |
-| Markdown | 3 | 674 | 151 | 0 | 523 | 0 |
+| Markdown | 3 | 677 | 152 | 0 | 525 | 0 |
 | Shell | 2 | 74 | 9 | 19 | 46 | 10 |
-| **Total** | **34** | **2,586** | **370** | **199** | **2,017** | **298** |
+| **Total** | **34** | **2,589** | **371** | **199** | **2,019** | **298** |
 
-- **Estimated Cost to Develop (organic):** $56,433
+- **Estimated Cost to Develop (organic):** $56,492
 - **Estimated Schedule Effort (organic):** 4.61 months
 - **Estimated People Required (organic):** 1.09
-- **Processed:** 91,056 bytes (0.091 megabytes)
+- **Processed:** 91,191 bytes (0.091 megabytes)
 
 *Generated with [scc](https://github.com/boyter/scc) on 2026-06-18*
 <!-- scc-end -->
