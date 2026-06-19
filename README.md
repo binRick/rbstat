@@ -5,7 +5,7 @@ resource-utilization CLI. It samples `/proc` at a fixed interval, diffs the
 counters, and prints colorized, dash-padded, fixed-width columns that line up
 with — and are colored like — real `dstat`.
 
-![rbstat — live colorized resource columns](docs/rbstat-demo.png)
+![rbstat — live resource monitor](docs/rbstat.gif)
 
 ```
 ----total-usage---- -dsk/total- -net/total- ---paging-- ---system--
@@ -141,7 +141,7 @@ values. See [`SPEC.md`](SPEC.md) for the full design.
 - **Estimated Cost to Develop (organic):** $56,492
 - **Estimated Schedule Effort (organic):** 4.61 months
 - **Estimated People Required (organic):** 1.09
-- **Processed:** 91,191 bytes (0.091 megabytes)
+- **Processed:** 91,176 bytes (0.091 megabytes)
 
 *Generated with [scc](https://github.com/boyter/scc) on 2026-06-18*
 <!-- scc-end -->
