@@ -5,6 +5,8 @@ resource-utilization CLI. It samples `/proc` at a fixed interval, diffs the
 counters, and prints colorized, dash-padded, fixed-width columns that line up
 with — and are colored like — real `dstat`.
 
+![rbstat — live colorized resource columns](docs/rbstat-demo.png)
+
 ```
 ----total-usage---- -dsk/total- -net/total- ---paging-- ---system--
 usr sys idl wai stl| read  writ| recv  send|  in   out | int   csw
@@ -129,14 +131,14 @@ values. See [`SPEC.md`](SPEC.md) for the full design.
 | Language | Files | Lines | Blanks | Comments | Code | Complexity |
 |---|---|---|---|---|---|---|
 | Go | 29 | 1,838 | 210 | 180 | 1,448 | 288 |
-| Markdown | 3 | 651 | 146 | 0 | 505 | 0 |
+| Markdown | 3 | 653 | 147 | 0 | 506 | 0 |
 | Shell | 2 | 74 | 9 | 19 | 46 | 10 |
-| **Total** | **34** | **2,563** | **365** | **199** | **1,999** | **298** |
+| **Total** | **34** | **2,565** | **366** | **199** | **2,000** | **298** |
 
-- **Estimated Cost to Develop (organic):** $55,904
+- **Estimated Cost to Develop (organic):** $55,934
 - **Estimated Schedule Effort (organic):** 4.60 months
 - **Estimated People Required (organic):** 1.08
-- **Processed:** 90,094 bytes (0.090 megabytes)
+- **Processed:** 90,165 bytes (0.090 megabytes)
 
 *Generated with [scc](https://github.com/boyter/scc) on 2026-06-18*
 <!-- scc-end -->
