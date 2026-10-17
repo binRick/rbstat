@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# Dev helper: sync the local rbstat tree to the Linux test host `mia`,
+# Dev helper: sync the local rbstat tree to the Linux test host `tea`,
 # build it there, and run it with any passed args against real /proc.
 #
 #   scripts/mia.sh                 # build + run with no args (default dstat view)
 #   scripts/mia.sh -cdn 1 5        # forward args to rbstat
-#   BUILD_ONLY=1 scripts/mia.sh    # just compile on mia, don't run
+#   BUILD_ONLY=1 scripts/mia.sh    # just compile on tea, don't run
 set -euo pipefail
 
-HOST="${MIA_HOST:-mia}"
+HOST="${MIA_HOST:-tea}"
 REMOTE_DIR="${MIA_DIR:-~/rbstat}"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 

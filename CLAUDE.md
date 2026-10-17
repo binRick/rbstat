@@ -8,25 +8,25 @@ pcp-dstat. See `README.md` for usage and `SPEC.md` for the full design.
 
 The program is **Linux-only** (it reads `/proc` and uses Linux ioctls). The
 development host is macOS, so the loop is: cross-compile locally for a fast
-compile check, sync to the Linux test host `mia`, then build and run there
+compile check, sync to the Linux test host `tea`, then build and run there
 against real `/proc`.
 
 - Fast local compile check: `GOOS=linux GOARCH=amd64 go build -o /tmp/x .`
 - Unit tests run anywhere (parsers/formatter take `[]byte`, render has a
   non-linux `termRows` stub): `go test ./internal/...`
-- Full loop on mia: `scripts/mia.sh [args]` (rsyncs, builds, runs on mia).
+- Full loop on tea: `scripts/mia.sh [args]` (rsyncs, builds, runs on tea).
   `BUILD_ONLY=1 scripts/mia.sh` to just compile.
 
-## The reference: pcp-dstat on mia
+## The reference: pcp-dstat on tea
 
-`mia` (`ssh mia`) runs CentOS Stream 10 with Go at `/usr/local/go/bin` and the
+`tea` (`ssh tea`) runs CentOS Stream 10 with Go at `/usr/local/go/bin` and the
 reference `dstat` (pcp-dstat 7.1.5) at `/usr/bin/dstat`. The Python source is
 readable there — the formatting/coloring logic is in `dchg`/`fchg`/`cprint`
 (`sed -n '1140,1240p;1560,1700p' /usr/bin/dstat`). When changing rendering,
 diff rbstat against dstat side by side, ideally concurrently:
 
 ```sh
-ssh mia 'cd ~/rbstat; dstat -cdny --nocolor 1 6 >/tmp/d & ./rbstat -cdny 1 6 >/tmp/r & wait; paste /tmp/d /tmp/r'
+ssh tea 'cd ~/rbstat; dstat -cdny --nocolor 1 6 >/tmp/d & ./rbstat -cdny 1 6 >/tmp/r & wait; paste /tmp/d /tmp/r'
 ```
 
 Note rbstat's first row is the since-boot average (classic dstat), so align
@@ -49,8 +49,8 @@ on a Linux host under `script` (so it colorizes), pull the bytes, then render
 them through rbterm:
 
 ```sh
-ssh mia 'script -qe -c "/path/to/rbstat 1 8" /tmp/rbstat.raw'
-scp mia:/tmp/rbstat.raw /tmp/rbstat.raw
+ssh tea 'script -qe -c "/path/to/rbstat 1 8" /tmp/rbstat.raw'
+scp tea:/tmp/rbstat.raw /tmp/rbstat.raw
 grep -av -e 'Script started' -e 'Script done' -e 'did not select' \
     /tmp/rbstat.raw > /tmp/rbstat-clean.raw
 # from a checkout of binRick/rbterm (built):
